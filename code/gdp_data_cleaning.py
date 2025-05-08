@@ -58,8 +58,8 @@ gdp_country_name_map = {
     "Sao Tome and Principe": "Sao Tome & Principe",
     "St. Vincent and the Grenadines": "St. Vincent & Grenadines",
     "Palestine": "State of Palestine",
-    "U.S. Virgin Islands": "U.S. Virgin Islands",
-    "Timor-Leste": "Timor-Leste"
+    "United States Virgin Islands": "U.S. Virgin Islands",
+    "East Timor": "Timor-Leste"
 }
 
 df_gdp['Country'] = df_gdp['Country'].replace(gdp_country_name_map)
@@ -118,10 +118,10 @@ pop_country_name_map = {
     "Micronesia (country)": "Micronesia",
     "Reunion": "Réunion",
     "Sao Tome and Principe": "Sao Tome & Principe",
-    "St. Vincent and the Grenadines": "St. Vincent & Grenadines",
+    "Saint Vincent and the Grenadines": "St. Vincent & Grenadines",
     "Palestine": "State of Palestine",
-    "U.S. Virgin Islands": "U.S. Virgin Islands",
-    "Timor-Leste": "Timor-Leste"
+    "United States Virgin Islands": "U.S. Virgin Islands",
+    "East Timor": "Timor-Leste"
 }
 
 df_pop['Country'] = df_pop['Country'].replace(pop_country_name_map)
