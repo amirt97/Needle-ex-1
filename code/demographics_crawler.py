@@ -308,10 +308,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    # main()
+    main()
 
-    # Confirm shape and columns
-    df = pd.read_csv("/Users/ShaniStu/PycharmProjects/Needle-ex-1/output/demographics_data.csv")
-    print(f"\n✅ demographics_data.csv saved.")
-    print(f"Shape: {df.shape}")
-    print(f"Columns: {list(df.columns)}")
+
