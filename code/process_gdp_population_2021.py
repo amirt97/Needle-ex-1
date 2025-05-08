@@ -9,7 +9,7 @@ df_pop = pd.read_csv("population_2021.csv", na_values=["None"])
 df_gdp.columns = [col.replace(" ", "_") for col in df_gdp.columns]
 df_pop.columns = [col.replace(" ", "_") for col in df_pop.columns]
 
-# ✅ Confirm shapes and columns
+# Confirm shapes and columns
 print("\n--- DataFrame Shapes and Columns ---")
 print(f"GDP shape: {df_gdp.shape}")
 print(f"GDP columns: {list(df_gdp.columns)}\n")
