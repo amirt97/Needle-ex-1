@@ -2,8 +2,8 @@ import pandas as pd
 import os
 
 # Step a) Load CSV files with na_values set
-df_gdp = pd.read_csv("gdp_per_capita_2021.csv", na_values=["None"])
-df_pop = pd.read_csv("population_2021.csv", na_values=["None"])
+df_gdp = pd.read_csv("output/gdp_per_capita_2021.csv", na_values=["None"])
+df_pop = pd.read_csv("output/population_2021.csv", na_values=["None"])
 
 # Step b) Rename columns to use underscores instead of spaces
 df_gdp.columns = [col.replace(" ", "_") for col in df_gdp.columns]
