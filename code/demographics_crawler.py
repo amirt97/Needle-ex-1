@@ -175,29 +175,27 @@ def extract_country_data(name: str, url: str) -> Dict[str, Any]:
         elif "males" in label:
             record["life_expectancy_male"] = value
 
-    # --- Urban Population ---------------------------------------------------
-    # Look for the urban population paragraph directly
-    urban_heading = soup.find(["h2", "h3"], id="urb") or soup.find(["h2", "h3"],
-                                                                   string=re.compile("Urban Population", re.I))
+
+    # # --- Urban Population ---------------------------------------------------
+    urban_heading = soup.find(
+        lambda tag: tag.name in ["h2", "h3"] and (
+                tag.get("id") == "urb" or "urban population" in tag.get_text(strip=True).lower())
+    )
 
     if urban_heading:
-        # Find the paragraph following the urban population heading
         urban_para = urban_heading.find_next("p")
         if urban_para:
-            # Extract the data using the specific pattern
             urban_text = urban_para.get_text(strip=True)
-            percent_match = re.search(r"(\d+\.\d+)%", urban_text)
+
+            percent_match = re.search(r"([\d.]+)%", urban_text)
             if percent_match:
                 record["urban_population_percent"] = percent_match.group(1)
 
             absolute_match = re.search(r"\(([\d,]+)\s*people", urban_text)
             if absolute_match:
                 record["urban_population_absolute"] = absolute_match.group(1).replace(",", "")
-
-    # If not found by HTML structure, try regex on the full page text
-    if "urban_population_percent" not in record or "urban_population_absolute" not in record:
+    else:
         page_text = soup.get_text("\n")
-        # Pattern to match "Currently, XX.X% of the population is urban (XX,XXX,XXX people in YYYY)"
         m_urban = re.search(
             r"Currently[^\n]*?([\d.]+)%[^\n]*?\(([\d,\s]+)\s*people",
             page_text,
@@ -208,28 +206,29 @@ def extract_country_data(name: str, url: str) -> Dict[str, Any]:
             record["urban_population_absolute"] = re.sub(r"[\s,]", "", m_urban.group(2))
 
     # --- Population Density -------------------------------------------------
-    # Try to find population density in structured sections
-    density_heading = soup.find(["h2", "h3"], string=re.compile("Population Density", re.I))
+    density_heading = soup.find(
+        lambda tag: tag.name in ["h2", "h3"] and (
+                tag.get("id") == "population-density" or "population density" in tag.get_text(strip=True).lower())
+    )
+
     if density_heading:
         density_para = density_heading.find_next("p")
         if density_para:
             density_text = density_para.get_text(strip=True)
-            density_match = re.search(r"(\d+\.?\d*)\s*people per km", density_text)
+            density_match = re.search(r"([\d,\.]+)\s*people per Km2", density_text, flags=re.IGNORECASE)
             if density_match:
-                record["population_density_km2"] = density_match.group(1)
-
-    # If not found, try regex on full page text
-    if "population_density_km2" not in record:
+                record["population_density_km2"] = density_match.group(1).replace(",", "")
+    else:
         page_text = soup.get_text("\n")
         m_density = re.search(
-            r"population density[^\n]*?is\s*([\d.]+)\s*people per km",
+            r"population density[^\n]*?is\s*([\d.,]+)\s*people per km",
             page_text,
             flags=re.IGNORECASE,
         )
         if m_density:
-            record["population_density_km2"] = m_density.group(1)
+            record["population_density_km2"] = re.sub(r"[^\d.]", "", m_density.group(1))
 
-    # fill missing keys
+    # Fill missing keys just in case
     for key in NUMERIC_COLUMNS:
         record.setdefault(key, None)
 
@@ -293,7 +292,8 @@ def main() -> None:
     # Create DataFrame and convert numeric fields
     df_demographics = pd.DataFrame(records)
     df_demographics = convert_numeric_fields(df_demographics)
-
+    # After converting numeric fields
+    df_demographics = convert_numeric_fields(df_demographics)
     # Save full dataset
     df_demographics.to_csv(OUTPUT_DIR / "demographics_data.csv", index=False)
 
