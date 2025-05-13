@@ -1,0 +1,7 @@
+Demographics Dataset Cleaning Summary
+=====================================
+
+Original row count: 200
+Rows after removing invalid life expectancy: 200
+
+Issues & Actions:

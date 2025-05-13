@@ -1,3 +1,29 @@
+"""
+gdp_population_preview.py
+
+This script loads and previews the GDP per Capita and Population datasets.
+
+Main tasks:
+- Loads GDP per Capita and Population datasets (CSV files).
+- Replaces spaces in column names with underscores.
+- Converts GDP and Population columns to numeric types (treats "None" as NaN).
+- Prints shapes and column names of both DataFrames.
+- Saves first 5 rows of each dataset before sorting to CSV (for reporting).
+- Sorts both datasets alphabetically by Country and saves first 5 sorted rows to CSV.
+- Generates descriptive statistics (mean, std, min, max, etc.) and saves them to CSV.
+
+Output files are saved to:
+    - output/gdp_before_sort.csv
+    - output/gdp_after_sort.csv
+    - output/gdp_describe.csv
+    - output/pop_before_sort.csv
+    - output/pop_after_sort.csv
+    - output/pop_describe.csv
+
+To run:
+    python gdp_population_preview.py
+"""
+
 import pandas as pd
 import os
 
@@ -25,7 +51,7 @@ assert 'Country' in df_pop.columns and 'Population' in df_pop.columns, "Missing 
 df_gdp['GDP_per_capita_PPP'] = pd.to_numeric(df_gdp['GDP_per_capita_PPP'], errors='coerce')
 df_pop['Population'] = pd.to_numeric(df_pop['Population'], errors='coerce')
 
-# ✅ Save output to parent directory's "output" folder
+# Save output to parent directory's "output" folder
 output_dir = "../output"
 os.makedirs(output_dir, exist_ok=True)
 

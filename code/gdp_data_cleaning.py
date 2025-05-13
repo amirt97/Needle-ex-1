@@ -1,3 +1,26 @@
+"""
+gdp_population_cleaning.py
+
+This script performs data cleaning and preprocessing for the GDP and Population datasets.
+
+Main tasks:
+- Loads GDP per Capita and Population datasets (CSV files).
+- Cleans numerical values: removes commas, non-numeric characters, and converts to numeric type.
+- Drops rows with missing GDP or Population values.
+- Detects and counts outliers using the Tukey method (Population uses log10 scale for skew adjustment).
+- Removes duplicate country entries (keeping the first occurrence).
+- Harmonizes country names using explicit mapping dictionaries to align with demographics dataset conventions.
+- Saves cleaned datasets to the output folder as CSV files:
+    - output/cleaned_gdp.csv
+    - output/cleaned_pop.csv
+- Saves dropped rows due to missing values as:
+    - output/dropped_gdp.csv
+    - output/dropped_pop.csv
+
+To run:
+    python gdp_population_cleaning.py
+"""
+
 import pandas as pd
 import numpy as np
 import os
@@ -66,7 +89,6 @@ df_gdp['Country'] = df_gdp['Country'].replace(gdp_country_name_map)
 df_gdp.set_index('Country', inplace=True)
 df_gdp.to_csv(f"{output_dir}/cleaned_gdp.csv")
 print("GDP cleaning complete. Cleaned data saved to output/cleaned_gdp.csv.")
-
 
 # === POPULATION CLEANING ===
 
