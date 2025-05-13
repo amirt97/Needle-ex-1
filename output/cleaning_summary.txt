@@ -5,3 +5,10 @@ Original row count: 200
 Rows after removing invalid life expectancy: 200
 
 Issues & Actions:
+<<<<<<< HEAD
+=======
+- Invalid life expectancy values (<40 or >100) → removed rows
+- Missing life expectancy values → removed rows
+- Country names normalized using smart_title() with manual exceptions
+- Name mismatches logged in name_mismatches.csv
+>>>>>>> 23cd9b59fb2a92570a443701d7af9e811543a9e7

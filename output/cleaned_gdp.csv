@@ -53,7 +53,11 @@ Djibouti,5947.861
 Dominica,15594.285
 Dominican Republic,21912.26
 East Asia and Pacific (WB),21174.826
+<<<<<<< HEAD
 East Timor,6824.7925
+=======
+Timor-Leste,6824.7925
+>>>>>>> 23cd9b59fb2a92570a443701d7af9e811543a9e7
 Ecuador,13539.711
 Egypt,15579.016
 El Salvador,10809.714
@@ -203,7 +207,11 @@ Ukraine,17846.408
 United Arab Emirates,67401.125
 United Kingdom,52872.195
 United States,71318.305
+<<<<<<< HEAD
 United States Virgin Islands,46893.55
+=======
+U.S. Virgin Islands,46893.55
+>>>>>>> 23cd9b59fb2a92570a443701d7af9e811543a9e7
 Upper-middle-income countries,19260.37
 Uruguay,29441.477
 Uzbekistan,9247.644

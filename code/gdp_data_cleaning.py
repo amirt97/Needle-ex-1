@@ -32,7 +32,7 @@ os.makedirs(output_dir, exist_ok=True)
 # === GDP CLEANING ===
 
 # Load GDP file
-df_gdp = pd.read_csv("../gdp_per_capita_2021.csv", na_values=["None"])
+df_gdp = pd.read_csv("/Users/ShaniStu/PycharmProjects/Needle-ex-1/output/gdp_per_capita_2021.csv", na_values=["None"])
 df_gdp.columns = [col.replace(" ", "_") for col in df_gdp.columns]
 
 # Clean GDP values
@@ -93,7 +93,7 @@ print("GDP cleaning complete. Cleaned data saved to output/cleaned_gdp.csv.")
 # === POPULATION CLEANING ===
 
 # Load population file
-df_pop = pd.read_csv("../population_2021.csv", na_values=["None"])
+df_pop = pd.read_csv("/Users/ShaniStu/PycharmProjects/Needle-ex-1/output/population_2021.csv", na_values=["None"])
 df_pop.columns = [col.replace(" ", "_") for col in df_pop.columns]
 
 # Clean population values

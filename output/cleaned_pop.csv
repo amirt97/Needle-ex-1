@@ -64,7 +64,11 @@ Denmark,5856724
 Djibouti,1121203
 Dominica,67176
 Dominican Republic,11123434
+<<<<<<< HEAD
 East Timor,1350102
+=======
+Timor-Leste,1350102
+>>>>>>> 23cd9b59fb2a92570a443701d7af9e811543a9e7
 Ecuador,17682398
 Egypt,110956950
 El Salvador,6255737
@@ -199,7 +203,11 @@ Saint Kitts and Nevis,46738
 Saint Lucia,178489
 Saint Martin (French part),29934
 Saint Pierre and Miquelon,5757
+<<<<<<< HEAD
 Saint Vincent and the Grenadines,102797
+=======
+St. Vincent & Grenadines,102797
+>>>>>>> 23cd9b59fb2a92570a443701d7af9e811543a9e7
 Samoa,213745
 San Marino,34546
 Sao Tome & Principe,221926
@@ -245,7 +253,11 @@ Ukraine,44298591
 United Arab Emirates,9789001
 United Kingdom,67668749
 United States,340161392
+<<<<<<< HEAD
 United States Virgin Islands,87184
+=======
+U.S. Virgin Islands,87184
+>>>>>>> 23cd9b59fb2a92570a443701d7af9e811543a9e7
 Upper-middle-income countries,2826091728
 Uruguay,3396643
 Uzbekistan,34243658
