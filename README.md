@@ -23,17 +23,11 @@ Place the following input files in the main project folder:
 1. **Preview the raw data**
 python process_gdp_poplation_2021.py
 
-markdown
-Copy
-Edit
 This produces summary files of the raw data (`output/` folder).
 
 2. **Clean GDP and Population datasets**
 python population_and_gdp_data_cleaning.py
 
-markdown
-Copy
-Edit
 - Cleans commas and non-numeric characters
 - Removes missing values
 - Detects outliers (Tukey method for GDP; log10 + Tukey for Population)
@@ -43,16 +37,9 @@ Edit
 3. **(If needed) Crawl or update Demographics data**
 python demographics_crawler.py
 
-markdown
-Copy
-Edit
-
 4. **Clean Demographics dataset**
 python demographics_analysis.py
 
-pgsql
-Copy
-Edit
 - Cleans invalid life expectancy values (<40 or >100 years)
 - Removes rows with missing life expectancy
 - Normalizes country names using `smart_title()` + manual exceptions
@@ -61,9 +48,6 @@ Edit
 5. **Perform Feature Engineering**
 python feature_engeneering.py
 
-markdown
-Copy
-Edit
 - Merges cleaned GDP, Population, and Demographics datasets
 - Prepares final dataset for analysis or modeling
 
@@ -76,10 +60,6 @@ output/cleaned_pop.csv
 output/dropped_pop.csv
 output/demographics_data.csv
 output/X.npy
-
-pgsql
-Copy
-Edit
 
 ## Notes
 
